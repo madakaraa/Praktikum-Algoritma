@@ -29,9 +29,31 @@ void push(int IB){
 
 void tampil(){
     Node *bantu = top;
-    while(bantu != nullptr){
-        cout << bantu->info << " ";
-        bantu = bantu->next;
+
+    if(top == nullptr){
+        cout << "Stack kosong";
+    } else {
+        while(bantu != nullptr){
+            cout << bantu->info << " ";
+            bantu = bantu->next;
+        }
+    }
+
+    cout << endl;
+}
+
+void pop(){
+    if(top == nullptr){
+        cout << "Stack masih kosong" << endl;
+    } else {
+        Node *hapus = top;
+        top = top->next;
+
+        delete hapus;
+
+        if(top == nullptr){
+            bot = nullptr;
+        }
     }
 }
 
@@ -39,6 +61,14 @@ int main(){
     push(10);
     push(20);
     push(30);
-    
+
+    cout << "Isi stack: ";
     tampil();
+
+    pop();
+
+    cout << "Setelah pop: ";
+    tampil();
+
+    return 0;
 }
